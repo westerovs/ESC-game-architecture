@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="page" lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="#" type="image/x-icon">
+  <title>Template</title>
+  <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body class="page-body">
+
+<div id='score' class='center'>0</div>
+
+<canvas id='game-canvas' width=600 height=400></canvas>
+
+<div id='game-over' class='hidden'>
+  <h1> Game Over </h1>
+  <h2>
+    Final Score:
+    <span id='final-score'>0</span>
+  </h2>
+
+  <h3>
+    <a href='javascript:window.location=window.location;'>Retry</a>
+  </h3>
+</div>
+
+<!-- Scripts -->
+<script>
+  // В учебных целях мы создадим глобальный объект, содержащий ссылки на все объекты.
+  window.ECS = {
+    Components: {},
+
+    systems: {},
+    entities: [],
+    game: {},
+
+    score: 0
+  };
+
+  // Canvas functionality (NOT ECS specific)
+  // --------------------------------------
+  // Для демонстрации просто возьмите ссылку на холст
+  // Некоторые системы (например, рендеринг) должны знать о холсте. Мы
+  // могли бы передать ссылку на него или сохранить его состояние глобально, например
+  // this:
+  ECS.$canvas = document.getElementById("game-canvas");
+  ECS.context = ECS.$canvas.getContext("2d");
+  ECS.$score = document.getElementById("score");
+
+
+</script>
+
+<script type="module" src="src/js/main.js"></script>
+</body>
+</html>
